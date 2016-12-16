@@ -32,4 +32,15 @@ class builderPage
                 return +currentBuildCount == +reference + 1
         browser.wait(buildCountIncrement, 10000)
 
+    getStopButton: ->
+        return element(By.buttonText('Stop'))
+
+    getPreviousButton: ->
+        element(By.partialLinkText('Previous'))
+
+    getNextButton: ->
+        element(By.partialLinkText('Next'))
+
+
+
 module.exports = builderPage
