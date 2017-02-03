@@ -1,7 +1,6 @@
 # coffee script
 # test goal: checks the capability to define a reason and to cancel/start the build
 
-forcePage = require('./pages/force.coffee')
 builderPage = require('./pages/builder.coffee')
 homePage = require('./pages/home.coffee')
 
@@ -11,7 +10,6 @@ describe 'force', () ->
 
     beforeEach(() ->
         builder = new builderPage('runtests', 'force')
-        force =  new forcePage()
         builder.goDefault()
     )
     afterEach () ->
@@ -23,7 +21,7 @@ describe 'force', () ->
         lastbuild = 0
         builder.go()
         builder.getLastSuccessBuildNumber().then (lastbuild) ->
-            builder.goForce()
+            force = builder.goForce()
             force.getStartButton().click()
             builder.go()
             builder.waitNextBuildFinished(lastbuild)
